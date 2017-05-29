@@ -7,6 +7,7 @@ import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
 import { UserActions } from '../user/user.actions';
 import { User } from '../user/user.model';
+import {NgrxFormGroup} from "../ngrxForms/ngrx-forms.model";
 
 @Component({
   selector: 'my-dashboard',
@@ -20,6 +21,8 @@ export class DashboardComponent implements OnDestroy, OnInit {
   nameLabel = 'Enter your name';
   user: User;
   user$: Observable<User>;
+  newForm: any;
+
   constructor(
     fb: FormBuilder,
     private store: Store<AppState>,
@@ -35,6 +38,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     this.form.get('name').setValue(this.user.name);
+    this.newForm = new NgrxFormGroup('newStore', this.store);
   }
 
   clearName() {

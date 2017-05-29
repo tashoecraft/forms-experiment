@@ -13,6 +13,8 @@ import { useLogMonitor } from '@ngrx/store-log-monitor';
 import { rootReducer } from './reducers';
 import { StoreDevToolsModule } from './features/store-devtools.module';
 import { UserEffects } from './user/user.effects';
+import { NgrxFormModule } from "./ngrxForms/ngrx-forms.module";
+import {formsReducer} from "./ngrxForms/ngrx-forms.reducer";
 
 const STORE_DEV_TOOLS_IMPORTS = [];
 if (ENV === 'development' && !AOT &&
@@ -33,6 +35,7 @@ export const APP_IMPORTS = [
   ReactiveFormsModule,
   RouterStoreModule.connectRouter(),
   StoreModule.provideStore(rootReducer),
+  NgrxFormModule.connectForms(),
   STORE_DEV_TOOLS_IMPORTS,
   StoreDevToolsModule
 ];
