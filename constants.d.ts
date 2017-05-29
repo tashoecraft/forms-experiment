@@ -11,16 +11,6 @@ export declare const DEV_SERVER_WATCH_OPTIONS: any;
 export declare const DEV_SOURCE_MAPS: string;
 export declare const PROD_SOURCE_MAPS: string;
 
-export declare const SHOW_WEBPACK_BUNDLE_ANALYZER: boolean;
-
-export declare const USE_DEV_SERVER_PROXY: boolean;
-export declare const DEV_SERVER_PROXY_CONFIG: any;
-
-export declare const DEV_SERVER_WATCH_OPTIONS: any;
-
-export declare const DEV_SOURCE_MAPS: string;
-export declare const PROD_SOURCE_MAPS: string;
-
 export declare const STORE_DEV_TOOLS: string;
 
 export declare const MY_COPY_FOLDERS: any[];
