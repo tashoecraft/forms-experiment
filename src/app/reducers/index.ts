@@ -5,6 +5,7 @@ import { storeLogger } from 'ngrx-store-logger';
 import { routerReducer, RouterState } from '@ngrx/router-store';
 
 import * as fromUser from '../user/user.reducer';
+import {FormsState, formsReducer} from "../ngrxForms/ngrx-forms.reducer";
 
 const modules = {
   'user': fromUser
@@ -13,11 +14,13 @@ const modules = {
 export interface AppState {
   router: RouterState;
   user: fromUser.UserState;
+  forms: FormsState;
 }
 
 export const syncReducers = {
   router: routerReducer,
-  user: fromUser.userReducer
+  user: fromUser.userReducer,
+  forms: formsReducer
 };
 
 const deepCombineReducers = (allReducers: any) => {

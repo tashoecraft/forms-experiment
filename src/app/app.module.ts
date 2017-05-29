@@ -1,5 +1,5 @@
 /**
- * This module is the entry for your App when NOT using universal.
+ * This module is the entry for your App.
  *
  * Make sure to use the 3 constant APP_ imports so you don't have to keep
  * track of your root app dependencies here. Only import directly in this file if
@@ -8,17 +8,13 @@
 
 import { ApplicationRef, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
+import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
 
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 import { Store } from '@ngrx/store';
-
-import {
-  BrowserTransferStateModule
-} from '../modules/transfer-state/browser-transfer-state.module';
 
 import { APP_DECLARATIONS } from './app.declarations';
 import { APP_ENTRY_COMPONENTS } from './app.entry-components';
@@ -39,10 +35,10 @@ import { AppState } from './reducers';
   entryComponents: [APP_ENTRY_COMPONENTS],
   imports: [
     CommonModule,
-    DEV_SERVER ? [BrowserAnimationsModule, BrowserTransferStateModule] : [],
     HttpModule,
     APP_IMPORTS,
-    RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: PreloadAllModules }),
+    IdlePreloadModule.forRoot(), // forRoot ensures the providers are only created once
+    RouterModule.forRoot(routes, { useHash: false, preloadingStrategy: IdlePreload }),
   ],
   bootstrap: [AppComponent],
   exports: [AppComponent],

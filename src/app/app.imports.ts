@@ -1,5 +1,7 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, PreloadAllModules } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
 import { MaterialModule } from '@angular/material';
 
 import { EffectsModule } from '@ngrx/effects';
@@ -8,11 +10,11 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { useLogMonitor } from '@ngrx/store-log-monitor';
 
-import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
-
 import { rootReducer } from './reducers';
 import { StoreDevToolsModule } from './features/store-devtools.module';
 import { UserEffects } from './user/user.effects';
+import { NgrxFormModule } from "./ngrxForms/ngrx-forms.module";
+import {formsReducer} from "./ngrxForms/ngrx-forms.reducer";
 
 const STORE_DEV_TOOLS_IMPORTS = [];
 if (ENV === 'development' && !AOT &&
@@ -27,12 +29,14 @@ if (ENV === 'development' && !AOT &&
 ]);
 
 export const APP_IMPORTS = [
+  BrowserAnimationsModule,
   EffectsModule.run(UserEffects),
-  // MaterialModule,
+  MaterialModule,
   ReactiveFormsModule,
   RouterStoreModule.connectRouter(),
   StoreModule.provideStore(rootReducer),
+  NgrxFormModule.connectForms(),
   STORE_DEV_TOOLS_IMPORTS,
-  StoreDevToolsModule,
-  TransferHttpModule
+  StoreDevToolsModule
 ];
+
