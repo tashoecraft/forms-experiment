@@ -1,42 +1,18 @@
+/* tslint:disable:no-forward-ref */
+
 import {
   Directive, ElementRef, Inject, InjectionToken, Optional, Renderer, forwardRef,
   HostBinding
 } from '@angular/core';
 import {ɵgetDOM as getDOM} from '@angular/platform-browser';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from './control_value_accessor';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export const NGRX_FORMS_DEFAULT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => NgrxFormsDefaultValueAccessor),
+  useExisting: forwardRef(() => NgrxFormsDefaultValueAccessorDirective),
   multi: true
 };
 
-/**
- * We must check whether the agent is Android because composition events
- * behave differently between iOS and Android.
- */
-function _isAndroid(): boolean {
-  const userAgent = getDOM() ? getDOM().getUserAgent() : '';
-  return /android (\d+)/.test(userAgent.toLowerCase());
-}
-
-/**
- * Turn this mode on if you want form directives to buffer IME input until compositionend
- * @experimental
- */
-export const COMPOSITION_BUFFER_MODE = new InjectionToken<boolean>('CompositionEventMode');
-
-/**
- * The default accessor for writing a value and listening to changes that is used by the
- * {@link NgModel}, {@link FormControlDirective}, and {@link FormControlName} directives.
- *
- *  ### Example
- *  ```
- *  <input type="text" name="searchQuery" ngModel>
- *  ```
- *
- *  @stable
- */
 @Directive({
   selector:
     '[ngrxFormControl]',
@@ -50,7 +26,6 @@ export class NgrxFormsDefaultValueAccessorDirective implements ControlValueAcces
       this.onChange(value);
     }
 
-  /** Whether the user is creating a composition string (IME events). */
   constructor(
     private _renderer: Renderer, private _elementRef: ElementRef) {}
 
