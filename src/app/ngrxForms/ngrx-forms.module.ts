@@ -12,7 +12,7 @@ export function provideFormsConnector() {
 
 @NgModule({})
 export class NgrxFormModule {
-  AppState: any;
+
   static connectForms() {
     return {
       ngModule: NgrxFormModule,

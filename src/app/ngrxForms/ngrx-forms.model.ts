@@ -1,10 +1,17 @@
-import {NgrxFormActions} from "./ngrx-forms.actions";
+import {NgrxFormActions} from './ngrx-forms.actions';
 
 export abstract class NgrxAbstractControl {
   _value: any;
 
-  constructor(store: any) {}
+  constructor() {}
 
+}
+
+export class NgrxFormControl extends NgrxAbstractControl {
+  public store: any;
+  constructor() {
+    super();
+  }
 }
 
 export class NgrxFormGroup extends NgrxAbstractControl {
@@ -14,7 +21,7 @@ export class NgrxFormGroup extends NgrxAbstractControl {
   private ngrxFormActions: NgrxFormActions;
 
   constructor(name: string|number, store, parentPath: undefined[] = []) {
-    super(store);
+    super();
     this.ngrxFormActions = new NgrxFormActions();
 
     store.dispatch(this.ngrxFormActions.createGroup(name));

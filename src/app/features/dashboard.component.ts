@@ -39,6 +39,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
   ngOnInit() {
     this.form.get('name').setValue(this.user.name);
     this.newForm = new NgrxFormGroup('newStore', this.store);
+    this.newForm.addControl('newControl');
   }
 
   clearName() {
