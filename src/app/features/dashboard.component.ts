@@ -7,7 +7,7 @@ import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
 import { UserActions } from '../user/user.actions';
 import { User } from '../user/user.model';
-import {NgrxFormGroup} from "../ngrxForms/ngrx-forms.model";
+import {NgrxFormGroup} from '../ngrxForms/ngrx-forms.model';
 
 @Component({
   selector: 'my-dashboard',

@@ -1,10 +1,9 @@
 /* tslint:disable:no-forward-ref */
 
 import {
-  Directive, ElementRef, Inject, InjectionToken, Optional, Renderer, forwardRef,
-  HostBinding
+  Directive, ElementRef, Renderer, forwardRef,
+  HostBinding, Input, OnInit
 } from '@angular/core';
-import {ɵgetDOM as getDOM} from '@angular/platform-browser';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export const NGRX_FORMS_DEFAULT_VALUE_ACCESSOR: any = {
@@ -18,20 +17,26 @@ export const NGRX_FORMS_DEFAULT_VALUE_ACCESSOR: any = {
     '[ngrxFormControl]',
   providers: [NGRX_FORMS_DEFAULT_VALUE_ACCESSOR]
 })
-export class NgrxFormsDefaultValueAccessorDirective implements ControlValueAccessor {
+export class NgrxFormsDefaultValueAccessorDirective implements ControlValueAccessor, OnInit {
   onChange = (_: any) => {};
   onTouched = () => {};
 
-  @HostBinding('input') _handleInput(value: any): void {
-      this.onChange(value);
-    }
+  // @HostBinding('input') _handleInput(value: any): void {
+  //     this.onChange(value);
+  //   }
+
+  @Input() ngrxFormControl;
 
   constructor(
     private _renderer: Renderer, private _elementRef: ElementRef) {}
 
+  ngOnInit() {
+    console.log(this.ngrxFormControl);
+  }
+
   writeValue(value: any): void {
     const normalizedValue = value == null ? '' : value;
-    this._renderer.setElementProperty(this._elementRef.nativeElement, 'value', normalizedValue);
+    this.ngrxFormControl.store.dispatch()
   }
 
   registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }

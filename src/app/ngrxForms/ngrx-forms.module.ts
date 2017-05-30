@@ -1,7 +1,8 @@
 
-import {NgModule, APP_BOOTSTRAP_LISTENER, Injectable, Inject} from "@angular/core";
-import {Dispatcher, Store, Action} from "@ngrx/store";
-import {Observable, Observer} from "rxjs/Rx";
+import {NgModule, APP_BOOTSTRAP_LISTENER, Injectable, Inject} from '@angular/core';
+import {Dispatcher, Store, Action} from '@ngrx/store';
+import {Observable, Observer} from 'rxjs/Rx';
+import { NgrxFormsDefaultValueAccessorDirective } from './ngrx-forms.dafault_value_accessor';
 
 export function provideFormsConnector() {
   return {
@@ -10,7 +11,9 @@ export function provideFormsConnector() {
   };
 }
 
-@NgModule({})
+@NgModule({
+  declarations: []
+})
 export class NgrxFormModule {
 
   static connectForms() {
