@@ -4,10 +4,10 @@ import { Action } from '@ngrx/store';
 @Injectable()
 
 export class NgrxFormActions {
-  static CREATE_GROUP = '[Group] Create Group';
-  createGroup(name: string|number): Action {
+  static ADD_GROUP = '[Group] ADD GROUP';
+  addGroup(name: string|number): Action {
     return {
-      type: NgrxFormActions.CREATE_GROUP,
+      type: NgrxFormActions.ADD_GROUP,
       payload: name
     };
   }
@@ -22,4 +22,25 @@ export class NgrxFormActions {
       }
     };
   }
+
+  // setValue (name, path?, value)
+
+  // setStatus (name, path?, status)
+
+  // setDisabled (name, path?, boolean)
+
+  // setEnabled (name, path?, boolean)
+
+  // setTouched() (name, path, boolean)
+
+  // setDirty() (name, path)
+
+  // setPristine (name, path)
+
+  // setPending(name, path)
+
+  // removeControl (name)
+
+  //
+
 }

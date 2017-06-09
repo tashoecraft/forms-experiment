@@ -2,6 +2,9 @@ import {NgrxFormActions} from './ngrx-forms.actions';
 
 
 export abstract class NgrxAbstractControl {
+  // path to root?
+
+
   // constructor(validator: ValidatorFn, asyncValidator: AsyncValidatorFn)
   // validator : ValidatorFn How to do validations? possibly with effects, Do we need separate asyncValidators then?
   // asyncValidator : AsyncValidatorFn
@@ -21,12 +24,12 @@ export abstract class NgrxAbstractControl {
   // private _touched: boolean = false;
   // private _parent: FormGroup|FormArray;: if there is a parent, then this will be the link between them
 
-  // markAsTouched () dispatch action to mark this control, and any ancestors as 'touched'
-  // markAsUnTouched() ^ opposite
-  // markAsDirty ^ just dirty
-  // markAsPristine ^
-  // markAsPending ^
-  // disable
+  // setTouched () dispatch action to mark this control, and any ancestors as 'touched'
+  // setUnTouched() ^ opposite
+  // setDirty ^ just dirty
+  // setPristine ^
+  // setPending ^
+  // set() disable -> check latest
 
   // abstract
   // setValue
