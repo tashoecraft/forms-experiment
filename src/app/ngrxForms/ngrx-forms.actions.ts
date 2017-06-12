@@ -4,7 +4,7 @@ import { Action } from '@ngrx/store';
 @Injectable()
 
 export class NgrxFormActions {
-  static ADD_GROUP = '[Group] ADD GROUP';
+  static ADD_GROUP = '[GROUP] ADD GROUP';
   addGroup(name: string|number): Action {
     return {
       type: NgrxFormActions.ADD_GROUP,
@@ -12,35 +12,122 @@ export class NgrxFormActions {
     };
   }
 
-  static ADD_CONTROL = '[Control] Add Control';
-  addControl(name: string|number, parentPath:[any]): Action {
+  static ADD_CONTROL = '[CONTROL] ADD CONTROL';
+  addControl(name: string|number, path: [string]): Action {
     return {
       type: NgrxFormActions.ADD_CONTROL,
       payload:  {
         name: name,
-        parentPath: parentPath
+        path: path
       }
     };
   }
 
-  // setValue (name, path?, value)
+  static SET_VALUE = '[CONTROL] SET VALUE';
+  setValue(name: string, value: any, path: [string]): Action {
+    return {
+      type: NgrxFormActions.SET_VALUE,
+      payload: {
+        name: name,
+        value: value,
+        path: path
+      }
+    }
+  }
 
-  // setStatus (name, path?, status)
+  static SET_STATUS = '[CONTROL] SET STATUS';
+  setStatus(name: string, status: string, path: [string]): Action {
+    return {
+      type: NgrxFormActions.SET_STATUS,
+      payload: {
+        name: name,
+        status: status,
+        path: path
+      }
+    }
+  }
 
-  // setDisabled (name, path?, boolean)
+  static SET_DISABLED = '[CONTROL] SET DISABLED';
+  setDisabled(name: string, disabled: boolean,  path: [string]): Action {
+    return {
+      type: NgrxFormActions.SET_DISABLED,
+      payload: {
+        name: name,
+        disabled: disabled,
+        path: path
+      }
+    }
+  }
 
-  // setEnabled (name, path?, boolean)
+  static SET_ENABLED = '[CONTROL] SET ENABLED';
+  setEnabled(name: string, enabled: boolean,  path: [string]): Action {
+    return {
+      type: NgrxFormActions.SET_ENABLED,
+      payload: {
+        name: name,
+        enabled: enabled,
+        path: path
+      }
+    }
+  }
 
-  // setTouched() (name, path, boolean)
+  static SET_TOUCHED = '[CONTROL] SET TOUCHED';
+  setTouched(name: string, touched: boolean,  path: [string]): Action {
+    return {
+      type: NgrxFormActions.SET_TOUCHED,
+      payload: {
+        name: name,
+        touched: touched,
+        path: path
+      }
+    }
+  }
 
-  // setDirty() (name, path)
+  static SET_DIRTY = '[CONTROL] SET DIRTY';
+  setDirty(name: string, dirty: boolean,  path: [string]): Action {
+    return {
+      type: NgrxFormActions.SET_DIRTY,
+      payload: {
+        name: name,
+        dirty: dirty,
+        path: path
+      }
+    }
+  }
 
-  // setPristine (name, path)
+  static SET_PRISTINE = '[CONTROL] SET PRISTINE';
+  setPristine(name: string, pristine: boolean,  path: [string]): Action {
+    return {
+      type: NgrxFormActions.SET_PRISTINE,
+      payload: {
+        name: name,
+        pristine: pristine,
+        path: path
+      }
+    }
+  }
 
-  // setPending(name, path)
+  static SET_PENDING = '[CONTROL] SET PENDING';
+  setPending(name: string, pending: boolean,  path: [string]): Action {
+    return {
+      type: NgrxFormActions.SET_PENDING,
+      payload: {
+        name: name,
+        pending: pending,
+        path: path
+      }
+    }
+  }
 
-  // removeControl (name)
-
-  //
+  static REMOVE_CONTROL = '[CONTROL] REMOVE_CONTROL';
+  removeControl(name: string, path?: [string]): Action {
+    return {
+      type: NgrxFormActions.REMOVE_CONTROL,
+      payload: {
+        name: name,
+        path: path
+      }
+    }
+  }
 
 }

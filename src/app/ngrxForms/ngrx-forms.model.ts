@@ -3,14 +3,20 @@ import {NgrxFormActions} from './ngrx-forms.actions';
 
 export abstract class NgrxAbstractControl {
   // path to root?
-
+  public rootPath: [string];
+  // parent : FormGroup|FormArray
+  public parent: string;
+  // get() value: Selector to value in store
+  public value: any;
+  // setValue: dispatch action to update value in store
+  
+  
+  
+  constructor() {}
 
   // constructor(validator: ValidatorFn, asyncValidator: AsyncValidatorFn)
   // validator : ValidatorFn How to do validations? possibly with effects, Do we need separate asyncValidators then?
   // asyncValidator : AsyncValidatorFn
-  // get() value: Selector to value in store
-  // setValue: dispatch action to update value in store
-  // parent : FormGroup|FormArray
   // status : string: VALID | INVALID | PENDING, selector to relevant place in store
   // valid : boolean: selector to status, if VALID, return boolean
   // invalid : boolean ^ opposite

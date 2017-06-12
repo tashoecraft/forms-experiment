@@ -1,15 +1,14 @@
 import { Action } from '@ngrx/store';
 import { NgrxFormActions } from './ngrx-forms.actions';
-import * as _ from 'lodash';
 
-export interface FormsState {
+export interface Forms {
   [key: string]: any;
 }
 
-export const initialState: FormsState = {
+export const initialState: Forms = {
 };
 
-export function formsReducer(state = initialState, action: Action): FormsState {
+export function formsReducer(state = initialState, action: Action): Forms {
   switch (action.type) {
 
     case NgrxFormActions.ADD_GROUP: {
